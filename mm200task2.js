@@ -28,14 +28,22 @@ function task2ValidateInput(){
 }
 //Validate the answer
 function task2ValidateAnswer(){
-    if(task2Input.value.toUpperCase() === task2Arr[task2Index].answ){
-        return true;
+    if(task2Index < task2Arr.length){
+        if(task2Input.value.toUpperCase() === task2Arr[task2Index].answ){
+            task2Correct++;
+            return true;
+        }
+        task2Failed++;
+        return false;
     }
-    return false;
 }
 //show the next question
 function task2ShowNext(){
-    task2Txt.innerHTML = "Puzzle " + (task2Index+1) + ": " + task2Arr[task2Index].pzzl;
+    if(task2Index < task2Arr.length){
+        task2Txt.innerHTML = "Puzzle " + (task2Index+1) + ": " + task2Arr[task2Index].pzzl;
+    } else {
+        task2Txt.innerHTML = "No more puzzles";
+    }
 }
 function updateScore(){
     task2Result.innerHTML = "Current result: " + task2Correct + " correct answers, " + task2Failed + " wrong answers";
@@ -44,27 +52,10 @@ function updateScore(){
 task2ShowNext();
 //Handle buttonclick
 task2Btn.onclick = function(){
-    if(task2Index < task2Arr.length){
-        if(task2ValidateInput()===true && task2ValidateAnswer()===true){
-            task2Correct++;
-            task2Index++;
-            task2Input.value = "";
-            task2ShowNext();
-            console.log("corr" + task2Index);
-        }
-        else{
-            task2Failed++;
-            task2Index++;
-            task2Input.value = "";
-            task2ShowNext();
-            console.log("fail" + task2Index);
-        }
+    if(task2ValidateInput()===true){
+        task2ValidateAnswer();
+        task2Index++;
+        task2ShowNext();
+        updateScore();
     }
-    else{
-        task2Txt.innerHTML = "No more puzzles!";
-        task2Btn.disabled = true;
-        task2Input.disabled = true;
-        task2Input.value = "";
-    }
-    updateScore();
 }
