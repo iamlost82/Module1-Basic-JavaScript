@@ -1,3 +1,4 @@
+//Game is no longer using the "pzzl" part of the array
 let gameArr = [
     {pzzl: "AIPZZ", answ: "PIZZA"},
     {pzzl: "KTESA", answ: "STEAK"},
@@ -31,17 +32,35 @@ function gameValidateAnswer(){
         return false;
     }
 }
+//Randomize letters
+function gameRandomize(word){
+    let gameWord = word.split("");
+    //Loop through each item in array
+    for(let i = gameWord.length - 1;i > 0; i--){
+        //find random place to put item
+        let j = Math.floor(Math.random() * (i+1));
+        //Store original item temporary
+        tempStore = gameWord[i];
+        //Move item to new slot
+        gameWord[i] = gameWord[j];
+        //Put item originally in slot to the one now available
+        gameWord[j] = tempStore;
+    }
+    randomizedWord = gameWord.join("");
+    return randomizedWord;
+}
 
 //show the next question
 function gameShowNext(){
     gameInput.value = "";
     if(gameIndex < gameArr.length){
-        gameTxt.innerHTML = "Puzzle " + (gameIndex+1) + ": " + gameArr[gameIndex].pzzl;
+        gameTxt.innerHTML = "Puzzle " + (gameIndex+1) + ": " + gameRandomize(gameArr[gameIndex].answ);
         gameStartTimer();
     } else {
         gameTxt.innerHTML = "No more puzzles";
         gameBtn.disabled = true;
         gameInput.disabled = true;
+        gameTimerTxt.innerHTML = "Game has now ended";
         gameDrawPieChartAndResult();
     }
 }
