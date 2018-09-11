@@ -31,6 +31,10 @@ button{
 button:hover{
     background-color: #b4b6ba;
 }
+button:disabled{
+    background-color: #b1c3d6;
+    cursor: auto;
+}
 input{
     padding: 12px 28px;
     margin: 5px;
