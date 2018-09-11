@@ -1,0 +1,19 @@
+{
+  "name": "module1_basic_javascript",
+  "version": "1.0.0",
+  "description": "Module 1 Basic JavaScript (Jostein), mandatory exercise1",
+  "main": "task1.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamlost82/Module1-Basic-JavaScript.git"
+  },
+  "author": "Otto André Haaland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamlost82/Module1-Basic-JavaScript/issues"
+  },
+  "homepage": "https://github.com/iamlost82/Module1-Basic-JavaScript#readme"
+}
