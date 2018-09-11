@@ -14,6 +14,7 @@ let gameCanvas = document.getElementById("gameCanvas");
 let gameTimerTxt = document.getElementById("gameTimerTxt");
 
 let gameGuessDuration = 5;//seconds
+let myTimer = null;
 //Initial index
 let gameIndex = -1;
 let gameCorrect = 0;
@@ -36,6 +37,7 @@ function gameShowNext(){
     gameInput.value = "";
     if(gameIndex < gameArr.length){
         gameTxt.innerHTML = "Puzzle " + (gameIndex+1) + ": " + gameArr[gameIndex].pzzl;
+        gameStartTimer();
     } else {
         gameTxt.innerHTML = "No more puzzles";
         gameBtn.disabled = true;
@@ -74,31 +76,27 @@ function gameDrawPieChartAndResult(){
     gameResult.innerHTML = "Your result was: " + gameCorrect + " out of " + gameArr.length + " (" + (result*100) + " %)";
 }
 
-/* Virker ikke helt ennå
-
 function gameStartTimer(){
-    let sec = 5;
-    let myTimer = setInterval(function(){
-        if(sec<0){
-            gameStopTimer();
+    let timerValue = gameGuessDuration;
+    let startTime = Date.now();
+    myTimer = setInterval(function(){
+        gameTimerTxt.innerHTML = "Time left: " + timerValue + " seconds";
+        timerValue = gameGuessDuration - (Math.floor((Date.now()-startTime)/1000));
+        if(timerValue<0){
+            gameTimeout();
         }
-        sec--;
-        console.log("running");
-    },1000);
+    },100);
 }
-function gameCheckTimer(){
-
+function gameTimeout(){
+    gameStopTimer();
+    gameFailed++;
+    gameIndex++;
+    gameShowNext();
 }
 function gameStopTimer(){
     clearInterval(myTimer);
 }
 
-*/
-
-//Handle buttonclick
-gameBtn.onclick = function(){
-    gameClickHandler();
-}
 function gameClickHandler(){
     //Initial click
     if(gameIndex===-1){
@@ -106,12 +104,17 @@ function gameClickHandler(){
         gameBtn.innerHTML = "Next puzzle";
         gameInput.disabled = false;
         gameShowNext();
-        //gameStartTimer()
     }
     else{
+        gameStopTimer();
         gameValidateAnswer();
         gameUpdateScore();
         gameIndex++;
         gameShowNext();
     }
+}
+
+//Handle buttonclick
+gameBtn.onclick = function(){
+    gameClickHandler();
 }
