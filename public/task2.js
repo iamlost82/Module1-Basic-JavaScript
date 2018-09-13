@@ -14,7 +14,7 @@ let gameResult = document.getElementById("gameResult");
 let gameCanvas = document.getElementById("gameCanvas");
 let gameTimerTxt = document.getElementById("gameTimerTxt");
 
-let gameGuessDuration = 5;//seconds
+let gameGuessDuration = 30;//seconds
 let myTimer = null;
 //Initial index
 let gameIndex = -1;
