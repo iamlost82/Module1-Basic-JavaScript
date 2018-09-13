@@ -1,4 +1,3 @@
-"use strict";
 let plantUrl = "";
 let plantListDiv = document.getElementById("plantListDiv");
 let shoppingListTxt = document.getElementById("shoppingListTxt");
@@ -20,16 +19,17 @@ function showPlants(category){
     }
     getMeSomePlants(plantUrl).then(function(data){
         plantListDiv.innerHTML = "";
+        plantListDiv.className = "flex-container flex-row";
         for(let i in data){
             let plant = document.createElement("div");
             plant.id = "plant_" + i;
+            plant.className = "plantCard";
             plant.innerHTML = 
             `<h3>${data[i].navn}</h3>
-            <img src="http://sukkergris.no/plants/images/small/${data[i].bildefil}">
+            <img src="http://sukkergris.no/plants/images/small/${data[i].bildefil}" alt="${data[i].navn}" style="width:100%">
             <p>${data[i].beskrivelse}</p>
             <p>Price per plant kr ${data[i].pris},-</p><br>
-            <button type="button" onclick="addToShoppingCart('${data[i].id}','${data[i].navn}','${data[i].pris}')">Buy this plant</button>
-            <hr>
+            <button type="button" class="btn-block" onclick="addToShoppingCart('${data[i].id}','${data[i].navn}','${data[i].pris}')">Buy this plant</button>
             `;
             plantListDiv.appendChild(plant);
         }
@@ -57,10 +57,10 @@ function showShoppingCart(){
     checkExcistingShoppingCart();
     let totalSum = 0;
     let output = "";
+    plantListDiv.className = "flex-container flex-column";
     if(shoppingListArr.length > 0){
         for(let i in shoppingListArr){
-            output += `<p>${shoppingListArr[i].name}, kr ${shoppingListArr[i].price},-</p>`;
-            output += "<hr>";
+            output += `<div class="shoppingCard">${shoppingListArr[i].name}, kr ${shoppingListArr[i].price},-</div>`;
             totalSum = totalSum + parseInt(shoppingListArr[i].price);
         }
     } else{

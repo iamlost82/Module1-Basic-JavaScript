@@ -14,16 +14,17 @@
         <h2>Task 3:</h2>
         <div>
             <p>Categories:</p>
-            <button type="button" onclick="showPlants('fordøyelse')">Fordøyelse</button>
-            <button type="button" onclick="showPlants('Sår og insektstikk')">Sår og insektsstikk</button>
-            <button type="button" onclick="showPlants('beroligende')">Beroligende</button>
-            <button type="button" onclick="showPlants('oppkvikkende')">Oppkvikkende</button>
-            <button type="button" onclick="showPlants('hudplager')">Hudplager</button>
-            <button type="button" onclick="showPlants('luftveisplager')">Luftveisplager</button>
+            <ul class="navigation">
+                <li><button class="navigation" type="button" onclick="showPlants('fordøyelse')">Fordøyelse</button></li>
+                <li><button class="navigation" type="button" onclick="showPlants('Sår og insektstikk')">Sår og insektsstikk</button></li>
+                <li><button class="navigation" type="button" onclick="showPlants('beroligende')">Beroligende</button></li>
+                <li><button class="navigation" type="button" onclick="showPlants('oppkvikkende')">Oppkvikkende</button></li>
+                <li><button class="navigation" type="button" onclick="showPlants('hudplager')">Hudplager</button></li>
+                <li><button class="navigation" type="button" onclick="showPlants('luftveisplager')">Luftveisplager</button></li>
+                <li><button class="navigation" type="button" onclick="showPlants()">Show all</button></li>
+            </ul>
         </div>
-        <div>
-                <button type="button" onclick="showPlants()">Show all</button>
-        </div>
+
         <div>
             <p>Shopping:</p>
             <button type="button" onclick="showShoppingCart()">Go to shopping cart</button>
