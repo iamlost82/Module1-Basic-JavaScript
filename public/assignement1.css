@@ -7,14 +7,6 @@
     min-width: 250px;
     border-radius: 25px;
 }
-.plantlist{
-    padding: 20px;
-    background-color: #d3d3d3;
-}
-.plantlistbtn{
-    margin-left: 15px;
-    float: right;
-}
 .val_error{
     background-color: #ff0000;
     border-color: #000000;
@@ -49,4 +41,17 @@ input{
 }
 canvas{
     border: 1px solid #d3d3d3;
+}
+.pageloader {
+    border: 16px solid #000000;
+    border-top: 16px solid #7ae600;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin_pageloader 2s linear infinite;
+}
+
+@keyframes spin_pageloader {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
