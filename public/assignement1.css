@@ -7,6 +7,14 @@
     min-width: 250px;
     border-radius: 25px;
 }
+.plantlist{
+    padding: 20px;
+    background-color: #d3d3d3;
+}
+.plantlistbtn{
+    margin-left: 15px;
+    float: right;
+}
 .val_error{
     background-color: #ff0000;
     border-color: #000000;
