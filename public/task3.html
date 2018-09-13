@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assignement1.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <title>MM-200, mandatory assignement 1, week 37, Task 3</title>
+</head>
+<body>
+    <h1>MM-200, mandatory assignement 1, week 37</h1>
+    <div class="container">
+        <h2>Task 3:</h2>
+        <div>
+            <p>Categories:</p>
+            <button type="button" onclick="showPlants('fordøyelse')">Fordøyelse</button>
+            <button type="button" onclick="showPlants('Sår og insektstikk')">Sår og insektsstikk</button>
+            <button type="button" onclick="showPlants('beroligende')">Beroligende</button>
+            <button type="button" onclick="showPlants('oppkvikkende')">Oppkvikkende</button>
+            <button type="button" onclick="showPlants('hudplager')">Hudplager</button>
+            <button type="button" onclick="showPlants('luftveisplager')">Luftveisplager</button>
+        </div>
+        <div>
+                <button type="button" onclick="showPlants()">Show all</button>
+        </div>
+        <div>
+            <p>Shopping:</p>
+            <button type="button" onclick="showShoppingCart()">Go to shopping cart</button>
+            <span id="shoppingListTxt"></span>
+        </div>
+        <div id="plantListDiv">
+
+        </div>
+    </div>
+</body>
+<script src="task3.js"></script>
+</html>
